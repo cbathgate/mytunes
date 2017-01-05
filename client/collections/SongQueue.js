@@ -9,14 +9,16 @@ var SongQueue = Backbone.Collection.extend({
         this.playFirst();
       }
     });
+
     this.on('ended', function(e) {
-      this.dequeue();
+      this.dequeue(this.at(0));
       if (this.length > 0) {
         this.playFirst();
       }
     });
+
     this.on('dequeue', function(e) {
-      this.remove(this);
+      this.dequeue(this);
     });
   },
 
@@ -24,8 +26,10 @@ var SongQueue = Backbone.Collection.extend({
     this.at(0).play();
   },
 
-  dequeue: function() {
-    this.remove(this.at(0));
+  dequeue: function(song) {
+    this.remove(song);
+
+      // add something to update current song?
   }
 
 });
