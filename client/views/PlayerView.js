@@ -6,7 +6,15 @@ var PlayerView = Backbone.View.extend({
   el: '<audio controls autoplay />',
 
   initialize: function() {
-    console.log(this.model);
+    // this.collection.on('change:library', function(model) {
+    //   this.playerView.setSong(model.get('library'));
+    // }, this);
+  },
+
+  events: {
+    'ended': function() {
+      this.model.trigger('ended', this);
+    }
   },
 
   setSong: function(song) {

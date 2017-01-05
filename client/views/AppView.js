@@ -12,6 +12,10 @@ var AppView = Backbone.View.extend({
       this.playerView.setSong(model.get('currentSong'));
     }, this);
 
+    // this.collection.on('change:library', function(collection) {
+    //   this.playerView.setSong(collection.get('library'));
+    // }, this);
+
     // this.model.on('change:songQueue', function(model) {
     //   console.log('im here');
     //   this.playerView.setSong(model.get('songQueue').at(1));
